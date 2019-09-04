@@ -1,21 +1,21 @@
 
 import sys
-import collections
-import operator
+
+def f(i):
+    return -i[1]
 
 inputs = str(sys.stdin.readline())
+inputs = inputs.lower()
 
-chars = []
-for i in range(len(inputs) - 1):
-    chars.append(inputs[i])
+freq = [[0 for i in range(2)] for j in range(26)]
+for i in range(len(freq)):
+    freq[i][0] = i
 
-counted = collections.Counter(chars)
-print(counted)
-print(collections.OrderedDict(counted))
+for i in inputs[:-1]:
+    freq[ord(i) - ord('a')][1] += 1
 
-
-if str(counted[sorted_coint_key[0]]) == str(counted[sorted_coint_key[1]]):
+freq = sorted(freq, key=f)
+if freq[0][1] == freq[1][1]:
     print('?')
 else:
-    print(counted[sorted_coint_key[0]])
-
+    print(chr(ord('A') + freq[0][0]))
