@@ -1,5 +1,11 @@
 
 
 
-for i in range(1):
-    print('dkdk')
+
+key='k'
+value = 'v'
+d = {}
+d[key] = value
+
+print(d)
+

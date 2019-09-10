@@ -6,6 +6,7 @@ def DFS(g, index):
     used = []
 
     while True:
+        # Add child to stack
         for i in range(len(g[index])):
             if g[index][i] not in used:
                 stack.append(g[index][i])

@@ -5,9 +5,9 @@ k = int(sys.stdin.readline())
 
 def gcd(a, b):
     while b is not 0:
-        r = a % b
-        a, b = b, r
-    return a
+        R = a % b
+        A, B = b, r
+    return A
 
 def lcm(a, b):
     return int(a * b / gcd(a, b))
