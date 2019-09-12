@@ -9,7 +9,7 @@ def save_file(path, string):
     f.close()
 
 # Set Url
-url = 'https://www.acmicpc.net/problem/' + sys.argv[0]
+url = 'https://www.acmicpc.net/problem/' + sys.argv[1]
 
 # Parsing
 response = requests.get(url)
