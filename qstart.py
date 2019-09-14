@@ -1,4 +1,6 @@
 
+#!/usr/bin/env python
+
 from bs4 import BeautifulSoup
 import requests
 import sys
@@ -30,5 +32,6 @@ for i in inputs:
 for i in outputs:
     save_file('output', i.text)
 
+save_file('.qconfig', sys.argv[1])
 print('ok...')
 
