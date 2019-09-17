@@ -3,32 +3,20 @@ import sys
 
 n = int(sys.stdin.readline())
 
-arr = []
+inputs = []
 for i in range(n):
-    arr.append([])
-    arr[i] = list(map(int, (sys.stdin.readline().split())))
+    inputs.append(list(map(int, sys.stdin.readline().split())))
 
-index = 0
-ret = 0
 for i in range(1, n):
+    for j in range(i+1):
+        if j == 0:
+            a = 0
+        else:
+            a = inputs[i-1][j-1]
+        if i == j:
+            b = 0
+        else:
+            b = inputs[i-1][j]
+        inputs[i][j] += max(a, b)
 
-    if arr[i][index] < arr[i][index + 1] :
-        ret += arr[i][index + 1] 
-        print(arr[i][index + 1])
-        index += 1
-    elif arr[i][index] > arr[i][index + 1] :
-        print(arr[i][index])
-        ret += arr[i][index] 
-    
-print(arr)
-print(ret)
-
-
-"""
-
-0
-00
-000
-0000
-
-"""
+print(max(inputs[-1]))
