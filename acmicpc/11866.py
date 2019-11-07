@@ -3,20 +3,20 @@ import sys
 
 N, K = map(int, sys.stdin.readline().split())
 
-# Init list
+
 l = list(range(1, N + 1))
 
-index = 0
-print('<', end='')
+print(l)
+
+i = 0
+j = 0
 while 0 < len(l):
 
-    index += K - 1
-    index = index % len(l)
+    i += 3 - j
 
-    print(l[index], end='')
-    if 1 < len(l):
-        print(', ', end='')
+    if len(l) < i:
+        i = i % len(i)
 
-    del l[index]
+    print(l[i - 1])
+    j += 1
 
-print('>', end='')

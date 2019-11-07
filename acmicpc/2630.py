@@ -2,20 +2,19 @@
 import sys
 import math
 
-
+boxB = 0
+boxW = 0
+ 
 def list2mat(l):
 
     n = int(math.sqrt(len(l)))
-    print(l)
 
     mat = list()
-    for i in l:
+    for i in range(n):
         row = list()
         for j in range(n):
-            row.append(i)
+            row.append(l[i * n + j])
         mat.append(row)
-        print(row)
-    print()
 
     return mat
 
@@ -25,13 +24,14 @@ def splitQ(mat):
     n = len(mat[0]) 
     h = int(n/2)
 
-    if h <= 1:
+    if h < 1:
         return
 
     q1 = list()
     q2 = list()
     q3 = list()
     q4 = list()
+    q = [q1, q2, q3, q4]
     for i in range(n):
         for j in range(n):
 
@@ -44,10 +44,16 @@ def splitQ(mat):
             elif i >= h and j >= h:
                 q4.append(mat[i][j])
 
-    splitQ(list2mat(q1))
-    splitQ(list2mat(q2))
-    splitQ(list2mat(q3))
-    splitQ(list2mat(q4))
+
+    for qx in q:
+        if sum(qx) == len(qx):
+            global boxB
+            boxB += 1
+        elif sum(qx) == 0:
+            global boxW
+            boxW += 1
+        else:
+            splitQ(list2mat(qx))
 
 
 N = int(sys.stdin.readline())
@@ -59,3 +65,6 @@ for i in range(N):
     mat.append(row)
 
 splitQ(mat)
+
+print(boxW)
+print(boxB)
